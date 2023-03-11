@@ -5,7 +5,7 @@ import datetime
 import calendar
 import requests
 import numpy as np
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
 
 #prec_noとblock_no含んだ『県マスター』が出来る
@@ -26,14 +26,6 @@ for a in range(len(df_sub)):
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
 
 st.dataframe(df_sub)
-
-import datetime
-import calendar
-import requests
-import pandas as pd
-import numpy as np
-from bs4 import BeautifulSoup
-from dateutil.relativedelta import relativedelta
 
 #何か月違いか
 def month_difference(date1,date2):
@@ -108,5 +100,9 @@ def df_add(date_new):
     year = date_new.year
     month =  date_new.month
     return date_new,year,month
+
+#body　データの日付の入力
+start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
+finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
 
 
