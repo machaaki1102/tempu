@@ -5,7 +5,7 @@ import datetime
 import calendar
 import requests
 import numpy as np
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
 
 #prec_noとblock_no含んだ『県マスター』が出来る
