@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
 
 #prec_noとblock_no含んだ『県マスター』が出来る
-# データを読み込む
+## データを読み込む
 df = pd.read_csv("kishou.txt", header=None,skiprows=1,sep="\s*,\s*", engine="python")
 df_sub = df.iloc[:,[0,1,2,3,4,10]] 
 df_sub.columns = ["No.", "i", "地点名", "prec_no", "block_no","県"]
