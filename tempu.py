@@ -24,7 +24,6 @@ for a in range(len(df_sub)):
         continue
     else:
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
-
 st.dataframe(df_sub)
 
 #何か月違いか
