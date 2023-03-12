@@ -7,7 +7,7 @@ import requests
 import numpy as np
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
-
+pi
 #prec_noとblock_no含んだ『県マスター』が出来る
 ## データを読み込む
 df = pd.read_csv("kishou.txt", header=None,skiprows=1,sep="\s*,\s*", engine="python")
