@@ -104,4 +104,25 @@ def df_add(date_new):
 start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
 finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
 
+year = start.year
+month = start.month
+day = start.day
 
+#ここからコード
+date_new = date1
+months = month_difference(date1,date2)
+date_list = date_lists(year,month)
+df = total_tem(year,month,day)
+
+#monthの期間分足す。
+while months >0:
+    date_new,year,month = df_add(date_new) 
+    date_list = date_lists(year,month)
+    df = pd.concat([df,total_tem(year,month,1)],axis=0) 
+    months = months -1
+#日付をオブジェクトから日数にする 
+df["日付"] = pd.to_datetime(df["日付"], format="%Y-%m-%d")
+
+#期間を絞る。
+df = df.query(f"'{start}' <= 日付 <= '{finish}'")
+df
