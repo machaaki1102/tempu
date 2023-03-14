@@ -26,6 +26,7 @@ for a in range(len(df_sub)):
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
 st.dataframe(df_sub)
 
+st.selectbox('県を選んでください',df['県'].unique())
 #何か月違いか
 def month_difference(date1,date2):
     months = (date2.year - date1.year) * 12 + date2.month - date1.month
@@ -109,7 +110,6 @@ day = start.day
 #気象庁の県コード及び地域コードを入れる
 prec_no = 57
 block_no = 47616
-
 
 #ここからコード
 date_new = start
