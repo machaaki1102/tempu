@@ -115,6 +115,7 @@ for a in range(len(df_sub)):
     else:
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
 
+st.title('気象庁から気温、降水量、日射量を取り出す')
 #st.dataframe(df_sub)
 ken =st.selectbox('県を選んでください',df_sub['県'].unique())
 start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
@@ -156,7 +157,7 @@ if st.button("入力完了,データ表示させる"):
     df = df.drop("index", axis=1)
     df = df.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"])
     df
-    
+
 if st.button('Download CSV'):
     csv = df.to_csv(index=False).encode('utf-8-sig')
     #b64 = base64.b64encode(csv.encode()).decode()
