@@ -115,6 +115,7 @@ prec_no,block_no = df_sub.loc[df_sub['県'] == ken, ['prec_no','block_no']].valu
 #prec_no]
 #.values[0]
 #.value[0]
+block_no = int(block_no)
 st.write(type(prec_no))
 st.write(type(block_no))
 
