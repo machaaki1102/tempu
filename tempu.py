@@ -115,7 +115,7 @@ for a in range(len(df_sub)):
     else:
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
 
-st.title('気象庁から気温、降水量、日射量を取り出す')
+st.title('気象庁より気温、降水量、日射量')
 #st.dataframe(df_sub)
 ken =st.selectbox('県を選んでください',df_sub['県'].unique())
 start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
