@@ -136,8 +136,6 @@ months = month_difference(start,finish)
 date_list = date_lists(year,month)
 df = total_tem(year,month,day)
 
-#追加
-df
 
 #monthの期間分足す。
 while months >0:
