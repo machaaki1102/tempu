@@ -158,4 +158,5 @@ block_no = 47616
 url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='    
 response = requests.get(url)
 html = response.text
-st.write(html)
+soup = BeautifulSoup(html, 'html.parser')
+st.write(soup)
