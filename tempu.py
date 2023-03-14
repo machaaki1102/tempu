@@ -136,5 +136,8 @@ df["日付"] = pd.to_datetime(df["日付"], format="%Y-%m-%d")
 
 #期間を絞る。
 df = df.query(f"'{start}' <= 日付 <= '{finish}'")
-df["日付"] = df["日付"].dt.strftime("%Y-%m-%d")
-df
+
+
+if st.button("入力完了,データ表示させる"):
+    df["日付"] = df["日付"].dt.strftime("%Y-%m-%d")
+    df
