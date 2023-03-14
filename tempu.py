@@ -103,10 +103,13 @@ def df_add(date_new):
 #body　データの日付の入力
 start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
 finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
-
 year = start.year
 month = start.month
 day = start.day
+#気象庁の県コード及び地域コードを入れる
+prec_no = 57
+block_no = 47616
+
 
 #ここからコード
 date_new = start
