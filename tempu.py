@@ -145,10 +145,10 @@ if st.button("入力完了,データ表示させる"):
 import base64
 if st.button('Download CSV'):
     csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()
-    href = f"data:file/csv;base64,{b64}"
+    #b64 = base64.b64encode(csv.encode()).decode()
+    #href = f"data:file/csv;base64,{b64}"
     st.download_button(
         label="気象データ",
-        data=href,
+    #    data=href,
         file_name="sample.csv"
     )
