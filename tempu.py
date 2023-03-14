@@ -109,8 +109,8 @@ month = start.month
 day = start.day
 
 #ここからコード
-date_new = date1
-months = month_difference(date1,date2)
+date_new = start
+months = month_difference(start,finish)
 date_list = date_lists(year,month)
 df = total_tem(year,month,day)
 
