@@ -140,4 +140,4 @@ df = df.query(f"'{start}' <= 日付 <= '{finish}'")
 
 if st.button("入力完了,データ表示させる"):
     df["日付"] = df["日付"].dt.strftime("%Y-%m-%d")
-    df
+    df = df.reset_index()
