@@ -111,7 +111,8 @@ day = start.day
 #prec_no = 57
 #block_no = 47616
 prec_no,block_no = df.loc[df['県'] == ken, [prec_no,block_no]].value
-
+st.write(prec_no)
+st.write(block_no)
 
 #ここからコード
 date_new = start
