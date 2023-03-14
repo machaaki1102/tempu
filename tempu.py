@@ -110,8 +110,8 @@ day = start.day
 #気象庁の県コード及び地域コードを入れる
 #prec_no = 57
 #block_no = 47616
-#prec_no,block_no = df_sub.loc[df_sub['県'] == ken, [prec_no,block_no]].value
-prec_no = df_sub.loc[df_sub['県'] == ken]['perc_no']
+prec_no,block_no = df_sub.loc[df_sub['県'] == ken, ['prec_no','block_no']].value
+#prec_no = df_sub.loc[df_sub['県'] == ken]['prec_no']
 #prec_no]
 #.values[0]
 #.value[0]
