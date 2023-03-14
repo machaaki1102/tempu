@@ -24,8 +24,8 @@ for a in range(len(df_sub)):
         continue
     else:
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
-st.dataframe(df_sub)
 
+st.dataframe(df_sub)
 st.selectbox('県を選んでください',df['県'].unique())
 #何か月違いか
 def month_difference(date1,date2):
@@ -102,6 +102,8 @@ def df_add(date_new):
     return date_new,year,month
 
 #body　データの日付の入力
+st.dataframe(df_sub)
+ken =st.selectbox('県を選んでください',df['県'].unique())
 start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
 finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
 year = start.year
