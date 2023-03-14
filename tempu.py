@@ -149,6 +149,6 @@ if st.button('Download CSV'):
     #href = f"data:file/csv;base64,{b64}"
     st.download_button(
         label="気象データ",
-    #    data=href,
+        data=csv,
         file_name="sample.csv"
     )
