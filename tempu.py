@@ -100,7 +100,7 @@ def df_add(date_new):
     return date_new,year,month
 
 #body　データの日付の入力
-st.dataframe(df_sub)
+#st.dataframe(df_sub)
 ken =st.selectbox('県を選んでください',df_sub['県'].unique())
 start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
 finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
@@ -141,3 +141,4 @@ df = df.query(f"'{start}' <= 日付 <= '{finish}'")
 if st.button("入力完了,データ表示させる"):
     df["日付"] = df["日付"].dt.strftime("%Y-%m-%d")
     df = df.reset_index()
+    st.dataframe(df)
