@@ -147,7 +147,7 @@ if st.button('Download CSV'):
     b64 = base64.b64encode(csv.encode()).decode()
     href = f"data:file/csv;base64,{b64}"
     st.download_button(
-        label="Download CSV",
+        label="気象データ",
         data=href,
         file_name="sample.csv"
     )
