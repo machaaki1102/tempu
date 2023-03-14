@@ -47,6 +47,8 @@ def total_tem(year,month,day):
     for row in rows:
             # 今trのなかのtdをすべて抜き出します
             data = row.findAll('td')
+            #追加
+            st.write(data)
 
               #１行の中には様々なデータがあるので全部取り出す。
               # ★ポイント
