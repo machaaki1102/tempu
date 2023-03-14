@@ -24,7 +24,7 @@ for a in range(len(df_sub)):
         continue
     else:
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
-ddd
+
 #何か月違いか
 def month_difference(date1,date2):
     months = (date2.year - date1.year) * 12 + date2.month - date1.month
