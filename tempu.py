@@ -141,6 +141,7 @@ if st.button("入力完了,データ表示させる"):
     df = df.reindex(columns=["日付", "平均気温(℃)","日照時間(h)"])
     df
 #ついかｄｄ
+import base64
 if st.button('Download CSV'):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()
