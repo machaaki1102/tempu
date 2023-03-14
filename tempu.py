@@ -41,8 +41,8 @@ def total_tem(year,month,day):
     #データだけを抜き出す
     rows = rows[4:]
 
-    #All_list = [['陸の平均気圧(hPa)', '海の平均気圧(hPa)', '降水量(mm)', '平均気温(℃)', '平均湿度(%)', '平均風速(m/s)', '日照時間(h)']]
-    All_list = [['平均気温(℃)','日照時間(h)']]
+    #All_list = [['陸の平均気圧(hPa)', '海の平均気圧(hPa)', '降水量(mm)',最低気温(℃) '平均気温(℃)', '平均湿度(%)', '平均風速(m/s)', '日照時間(h)']]
+    All_list = [['平均気温(℃)','日照時間(h)','降水量(mm)','最高気温(℃)','最低気温(℃)']]
 
     for row in rows:
             # 今trのなかのtdをすべて抜き出します
@@ -55,14 +55,20 @@ def total_tem(year,month,day):
     #         rowData.append(float(data[2].string))
     #         rowData.append(float(data[3].string))
     #前回       rowData.append(float(data[6].string.replace(")", "")))
+      
             rowData.append(float(data[6].string.replace(")", "").replace(" ", "").replace("]", "")))
-    #        rowData.append(float(data[9].string))
+            rowData.append(float(data[16].string.replace(")", "").replace(" ", "").replace("]", "")))
+            #追加
+            rowData.append(float(data[3].string.replace(")", "").replace(" ", "").replace("]", "").replace("--", "")))
+            rowData.append(float(data[7].string.replace(")", "").replace(" ", "").replace("]", "")))
+            rowData.append(float(data[8].string.replace(")", "").replace(" ", "").replace("]", "")))
+    #  rowData.append(float(data[9].string))
     #        rowData.append(float(data[11].string))
     #確認用
     #        print(type(data[16]))
     #        print(type(data[16].string))
     #        print(type(float(data[16].string.replace(")", ""))))
-            rowData.append(float(data[16].string.replace(")", "").replace(" ", "").replace("]", "")))
+            #rowData.append(float(data[16].string.replace(")", "").replace(" ", "").replace("]", "")))
     #前回        rowData.append(float(data[16].string.replace(")", "")))
 
               #次の行にデータを追加
@@ -122,6 +128,9 @@ months = month_difference(start,finish)
 date_list = date_lists(year,month)
 df = total_tem(year,month,day)
 
+#追加
+df
+
 #monthの期間分足す。
 while months >0:
     date_new,year,month = df_add(date_new) 
@@ -152,11 +161,3 @@ if st.button('Download CSV'):
         data=csv,
         file_name="sample.csv"
     )
-prec_no = 57
-block_no = 47616
-
-url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='    
-response = requests.get(url)
-html = response.text
-soup = BeautifulSoup(html, 'html.parser')
-st.write(soup)
