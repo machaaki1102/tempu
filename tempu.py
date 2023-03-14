@@ -154,7 +154,7 @@ if st.button("入力完了,データ表示させる"):
     df["日付"] = df["日付"].dt.strftime("%Y-%m-%d")
     df = df.reset_index()
     df = df.drop("index", axis=1)
-    df = df.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)"])
+    df = df.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"])
     df
 #ついかｄｄ
 import base64
