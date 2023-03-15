@@ -172,13 +172,15 @@ while months >0:
     months = months -1
 #日付をオブジェクトから日数にする 
 df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
-#期間を絞る。
+#期間を絞。
 df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 #df_ago
 
 df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
 # - df["平均気温(℃)"]
-df["日付"]
+
+st.write(df.dtypes)
+
 df_dif = df.concat([df[["日付"]],df_dif],join='outer',axis=1)
 df_dif
 #st.write(df.dtypes)
