@@ -161,6 +161,9 @@ if st.button("入力完了,データ表示させる"):
     import plotly.express as px
     import plotly.graph_objects as go
     from plotly.subplots import make_subplots
+# make_subplotsで2つのy軸を持つレイアウト作成
+
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
 # #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
 #    fig = px.bar(df, x="日付", y=[ "降水量(mm)", "日照時間(h)"],＃         title="日付別の気象情報",
 #             labels={"value": "℃", "variable": "変数", "日付": "日付"},
@@ -170,7 +173,7 @@ if st.button("入力完了,データ表示させる"):
 #    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
 #    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
 #    st.plotly_chart(fig)
-    fig = go.Figure()
+    #fig = go.Figure()
 #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"
     fig.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='blue')))
     fig.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
