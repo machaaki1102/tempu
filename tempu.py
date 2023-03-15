@@ -172,48 +172,18 @@ if st.button("入力完了,データ表示させる"):
 #    fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
 #    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
 #    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
-#    st.plotly_chart(fig)
-    #fig = go.Figure()
-#"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"
-    fig.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='blue')))
-    fig.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
-    fig.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='green')))
-    #fig.update_layout(title="栽培期間中の天候", xaxis_title="日付", yaxis_title="気温")
 
-# 棒グラフの作成
-    #fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", yaxis="y2"))
-    #fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", yaxis="y2"))
-#    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
+    fig.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='red')))
+    fig.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='yellow')))
+    fig.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='blue')))
 
-## 2つ目のy軸のラベル設定
-#    fig.update_yaxes(title_text="気温(℃)", secondary_y=False)
-#    fig.update_yaxes(title_text="降水量(mm)", secondary_y=True)
-# Y軸の目盛りを表示
-    #fig.update_xaxes(title_text="日付")
-#    fig.update_yaxes(title_text="気温(℃)", range=[-20, 40])
-# y軸2の設定
-#    fig.update_yaxes(title_text="降水量(mm)", range=[0, max(df["降水量(mm)"])*1.2], side="right", overlaying="y")
-
-# y軸1の設定
-    #fig.update_yaxes(title_text="気温(℃)", range=[-10, 40])
-
-# y軸2の設定
-#    fig.update_yaxes(title_text="降水量(mm) / 日照時間(h)", range=[0, 600], side="right", overlaying="y")
-
-    #fig.update_layout(yaxis=dict(title="気温℃"))
-    #fig.update_layout(yaxis2=dict(title="降水量(mm),日射量[h]"))
-    #fig.update_yaxes(tickfont=dict(size=12), secondary_y=True)
-    #fig.update_yaxes(title_text="降水量・日射量", secondary_y=True)
-    # 2つ目のy軸に棒グラフを追加
     fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
-    fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", marker_color='red'), secondary_y=True)
+    fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", marker_color='orange'), secondary_y=True)
 
 # 1つめのy軸の範囲設定
     fig.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
 # 2つめのy軸の範囲設定
     fig.update_yaxes(range=[0, 150], title_text="降水量(mm)", secondary_y=True)
-
-#fig.show()
     
     st.plotly_chart(fig)
 
