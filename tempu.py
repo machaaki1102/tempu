@@ -159,6 +159,7 @@ if st.button("入力完了,データ表示させる"):
 #追加パーツ
     import plotly.express as px
     import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
 # #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
 #    fig = px.bar(df, x="日付", y=[ "降水量(mm)", "日照時間(h)"],＃         title="日付別の気象情報",
 #             labels={"value": "℃", "variable": "変数", "日付": "日付"},
@@ -174,16 +175,17 @@ if st.button("入力完了,データ表示させる"):
     fig.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
     fig.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='green')))
 
-    fig.update_layout(title="栽培期間中の天候", xaxis_title="日付", yaxis_title="気温")
+    #fig.update_layout(title="栽培期間中の天候", xaxis_title="日付", yaxis_title="気温")
 
 # 棒グラフの作成
-    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)"))
-    fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)"))
+    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", yaxis="y2"))
+    fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", yaxis="y2"))
 
 # Y軸の目盛りを表示
-    fig.update_yaxes(title_text="気温", secondary_y=False)
-    fig.update_yaxes(title_text="降水量・日射量", secondary_y=True)
-
+    fig.update_layout(yaxis=dict(title="気温℃"))
+    fig.update_layout(yaxis2=dict(title="降水量(mm),日射量[h]"))
+    fig.update_yaxes(tickfont=dict(size=12), secondary_y=True)
+    #fig.update_yaxes(title_text="降水量・日射量", secondary_y=True)
     st.plotly_chart(fig)
 
 
