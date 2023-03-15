@@ -178,6 +178,7 @@ df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 
 df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
 # - df["平均気温(℃)"]
+df_dif = df.concat[df["日付"],df_dif]
 df_dif
 #st.write(df.dtypes)
 #ddst.write(df_ago.dtypes)
