@@ -178,12 +178,12 @@ if st.button("入力完了,データ表示させる"):
     #fig.update_layout(title="栽培期間中の天候", xaxis_title="日付", yaxis_title="気温")
 
 # 棒グラフの作成
-    #fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", yaxis="y2"))
+    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", yaxis="y2"))
     #fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", yaxis="y2"))
 
 # Y軸の目盛りを表示
     fig.update_layout(yaxis=dict(title="気温℃"))
-    fig.update_layout(yaxis2=dict(title="降水量(mm),日射量[h]"))
+    #fig.update_layout(yaxis2=dict(title="降水量(mm),日射量[h]"))
     #fig.update_yaxes(tickfont=dict(size=12), secondary_y=True)
     #fig.update_yaxes(title_text="降水量・日射量", secondary_y=True)
     st.plotly_chart(fig)
