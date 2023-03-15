@@ -163,7 +163,7 @@ months = month_difference(start_ago,finish_ago)
 date_list = date_lists(start_ago.year,start_ago.month)
 df_ago = total_tem(start_ago.year,start_ago.month,start_ago.day)
 
-st.write(months)
+#st.write(months)
 #monthの期間分足す。
 while months >0:
     date_new,year,month = df_add(date_new) 
