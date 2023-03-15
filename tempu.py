@@ -160,24 +160,30 @@ if st.button("入力完了,データ表示させる"):
     import plotly.express as px
     import plotly.graph_objects as go
 # #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
-    fig = px.bar(df, x="日付", y=[ "降水量(mm)", "日照時間(h)"],
-             title="日付別の気象情報",
-             labels={"value": "℃", "variable": "変数", "日付": "日付"},
-             barmode="group",
-             height=600)
-    #fig.update_layout(xaxis_title="日付", yaxis_title="値")
-    fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
-    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
-    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
-    #fig.add_trace(go.Scatter(x=df['日付'], y=df['降水量(mm)'], name="降水量(mm)", mode="lines"))
-    #fig.add_trace(go.Scatter(x=df['日付'], y=df['日照時間(h)'], name="日照時間(h)", mode="lines"))
-    
-    #fig.add_trace(px.line(df, x="日付", y="平均気温(℃)", name="平均気温(℃)").data[0])
-    #fig.add_trace(px.line(df, x="日付", y="最高気温(℃)", name="最高気温(℃)").data[0])
-    #fig.add_trace(px.line(df, x="日付", y="最低気温(℃)", name="最低気温(℃)").data[0])
-    #fig.add_trace(px.line(df, x="日付", y="降水量(mm)", name="降水量(mm)").data[0])
-    #fig.add_trace(px.line(df, x="日付", y="日照時間(h)", name="日照時間(h)").data[0])
-    #df
+#    fig = px.bar(df, x="日付", y=[ "降水量(mm)", "日照時間(h)"],＃         title="日付別の気象情報",
+#             labels={"value": "℃", "variable": "変数", "日付": "日付"},
+#             barmode="group",
+#             height=600)
+#    fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
+#    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
+#    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
+#    st.plotly_chart(fig)
+    fig = go.Figure()
+#"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"
+    fig.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='blue')))
+    fig.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
+    fig.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='green')))
+
+    fig.update_layout(title="栽培期間中の天候", xaxis_title="日付", yaxis_title="気温")
+
+# 棒グラフの作成
+    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)"))
+    fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)"))
+
+# Y軸の目盛りを表示
+    fig.update_yaxes(title_text="気温", secondary_y=False)
+    fig.update_yaxes(title_text="降水量・日射量", secondary_y=True)
+
     st.plotly_chart(fig)
 
 
