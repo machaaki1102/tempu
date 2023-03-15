@@ -148,7 +148,7 @@ while months >0:
 df["日付"] = pd.to_datetime(df["日付"], format="%Y-%m-%d")
 #期間を絞る。
 df = df.query(f"'{start}' <= 日付 <= '{finish}'")
-df
+#df
 #=======2023.15.修正
 #1年前のデータフレームを作成
 start_ago = datetime.date(start.year -1 , start.month, start.day)#date_agoが前回のstart
@@ -179,9 +179,9 @@ df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
 # - df["平均気温(℃)"]
 
-st.write(len(df[["日付"]]))
+#st.write(len(df[["日付"]]))
 
-st.write(df_dif.dtypes)
+#st.write(df_dif.dtypes)
 
 df_dif = df.concat([df[["日付"]],df_dif],axis=1)
 
