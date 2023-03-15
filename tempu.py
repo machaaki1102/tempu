@@ -160,7 +160,7 @@ if st.button("入力完了,データ表示させる"):
     import plotly.express as px
     import plotly.graph_objects as go
 # #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
-    fig = px.bar(df, x="日付", y=["平均気温(℃)", "最高気温(℃)", "最低気温(℃)", "降水量(mm)", "日照時間(h)"],
+    fig = px.bar(df, x="日付", y=[ "降水量(mm)", "日照時間(h)"],
              title="日付別の気象情報",
              labels={"value": "値", "variable": "変数", "日付": "日付"},
              barmode="group",
