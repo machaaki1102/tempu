@@ -175,18 +175,19 @@ if st.button("入力完了,データ表示させる"):
     fig.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='blue')))
     fig.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
     fig.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='green')))
-
     #fig.update_layout(title="栽培期間中の天候", xaxis_title="日付", yaxis_title="気温")
 
 # 棒グラフの作成
     #fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", yaxis="y2"))
     #fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", yaxis="y2"))
+    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
 
+# 2つ目のy軸のラベル設定
+    fig.update_yaxes(title_text="気温(℃)", secondary_y=False)
+    fig.update_yaxes(title_text="降水量(mm)", secondary_y=True)
 # Y軸の目盛りを表示
-    fig.update_xaxes(title_text="日付")
-
+    #fig.update_xaxes(title_text="日付")
     fig.update_yaxes(title_text="気温(℃)", range=[-20, 40])
-
 # y軸2の設定
 #    fig.update_yaxes(title_text="降水量(mm)", range=[0, max(df["降水量(mm)"])*1.2], side="right", overlaying="y")
 
