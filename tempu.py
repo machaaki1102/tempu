@@ -61,7 +61,8 @@ def total_tem(year,month,day):
             rowData.append(float(data[6].string.replace(")", "").replace(" ", "").replace("]", "")))
             rowData.append(float(data[16].string.replace(")", "").replace(" ", "").replace("]", "")))
             #追加
-            if data[3].string == '--':
+            if  '--' in data[3].string:
+            #if data[3].string == '--':
                 #rowData.append(np.nan)
                 rowData.append(0)
             else:
