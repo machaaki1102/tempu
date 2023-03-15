@@ -166,9 +166,9 @@ if st.button("入力完了,データ表示させる"):
              barmode="group",
              height=600)
     #fig.update_layout(xaxis_title="日付", yaxis_title="値")
-    #fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
-    #fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
-    #fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
+    fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
+    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
+    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
     #fig.add_trace(go.Scatter(x=df['日付'], y=df['降水量(mm)'], name="降水量(mm)", mode="lines"))
     #fig.add_trace(go.Scatter(x=df['日付'], y=df['日照時間(h)'], name="日照時間(h)", mode="lines"))
     
