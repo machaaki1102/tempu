@@ -174,7 +174,7 @@ while months >0:
 df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
 #期間を絞る。
 df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
-df_ago
+#df_ago
 
 df_dif = df_ago["平均気温(℃)"]
 # - df["平均気温(℃)"]
