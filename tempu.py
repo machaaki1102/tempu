@@ -148,7 +148,7 @@ while months >0:
 df["日付"] = pd.to_datetime(df["日付"], format="%Y-%m-%d")
 #期間を絞る。
 df = df.query(f"'{start}' <= 日付 <= '{finish}'")
-#df
+df
 #=======2023.15.修正
 #1年前のデータフレームを作成
 start_ago = datetime.date(start.year -1 , start.month, start.day)#date_agoが前回のstart
