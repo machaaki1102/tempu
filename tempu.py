@@ -179,10 +179,18 @@ if st.button("入力完了,データ表示させる"):
 
 # 棒グラフの作成
     fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", yaxis="y2"))
-    #fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", yaxis="y2"))
+    fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", yaxis="y2"))
 
 # Y軸の目盛りを表示
-    fig.update_layout(yaxis=dict(title="気温℃"))
+    fig.update_xaxes(title_text="日付")
+
+# y軸1の設定
+    fig.update_yaxes(title_text="気温(℃)", range=[-10, 40])
+
+# y軸2の設定
+    fig.update_yaxes(title_text="降水量(mm) / 日照時間(h)", range=[0, 600], side="right", overlaying="y")
+
+    #fig.update_layout(yaxis=dict(title="気温℃"))
     #fig.update_layout(yaxis2=dict(title="降水量(mm),日射量[h]"))
     #fig.update_yaxes(tickfont=dict(size=12), secondary_y=True)
     #fig.update_yaxes(title_text="降水量・日射量", secondary_y=True)
