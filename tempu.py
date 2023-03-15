@@ -172,8 +172,7 @@ if st.button("入力完了,データ表示させる"):
 #    st.plotly_chart(fig)
     fig = go.Figure()
 #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"
-    fig.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", mode="lines"))
-    #line=dict(color='blue')))
+    fig.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='blue')))
     fig.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
     fig.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='green')))
 
@@ -186,11 +185,16 @@ if st.button("入力完了,データ表示させる"):
 # Y軸の目盛りを表示
     fig.update_xaxes(title_text="日付")
 
-# y軸1の設定
     fig.update_yaxes(title_text="気温(℃)", range=[-10, 40])
 
 # y軸2の設定
-    fig.update_yaxes(title_text="降水量(mm) / 日照時間(h)", range=[0, 600], side="right", overlaying="y")
+    fig.update_yaxes(title_text="降水量(mm)", range=[0, max(df["降水量(mm)"])*1.2], side="right", overlaying="y")
+
+# y軸1の設定
+    #fig.update_yaxes(title_text="気温(℃)", range=[-10, 40])
+
+# y軸2の設定
+#    fig.update_yaxes(title_text="降水量(mm) / 日照時間(h)", range=[0, 600], side="right", overlaying="y")
 
     #fig.update_layout(yaxis=dict(title="気温℃"))
     #fig.update_layout(yaxis2=dict(title="降水量(mm),日射量[h]"))
