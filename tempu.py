@@ -180,7 +180,7 @@ if st.button("入力完了,データ表示させる"):
 # 棒グラフの作成
     #fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", yaxis="y2"))
     #fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", yaxis="y2"))
-    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
+#    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
 
 ## 2つ目のy軸のラベル設定
 #    fig.update_yaxes(title_text="気温(℃)", secondary_y=False)
