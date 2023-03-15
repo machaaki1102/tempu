@@ -8,6 +8,7 @@ import numpy as np
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
 import base64
+import plotly.graph_objs as go
 
 #何か月違いか
 def month_difference(date1,date2):
@@ -180,6 +181,21 @@ df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["
 df_dif['日付'] = df["日付"]
 
 df_dif
+
+
+
+# グラフを作成します
+fig = go.Figure()
+# 差分の折れ線グラフを追加します
+fig.add_trace(go.Scatter(x=df["date"], y=df_dif["平均気温(℃)"], mode="lines", name="差分"))
+
+# 積み上げ値の折れ線グラフを追加します
+fig.add_trace(go.Scatter(x=df["date"], y=df_dif["平均気温(℃)"].cumsum(), mode="lines", name="積み上げ"))
+
+# X軸を日付として設定します
+fig.update_xaxes(type='date', tickformat='%Y-%m-%d', title="日付")
+st.plotly_chart(fig)
+
 #st.write(df.dtypes)
 #ddst.write(df_ago.dtypes)
 
