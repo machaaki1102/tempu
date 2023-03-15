@@ -180,7 +180,7 @@ df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["
 
 df_dif['日付'] = df["日付"]
 
-df_dif
+#df_dif
 
 
 
