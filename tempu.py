@@ -177,6 +177,10 @@ df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 
 df_ago
 #======
+#平均気温・降水量・日射時間の差と累積を表示
+
+df_dif = df_ago - df
+df_dif
 
 if st.button("入力完了,データ表示させる"):
     df["日付"] = df["日付"].dt.strftime("%Y-%m-%d")
