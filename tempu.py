@@ -182,12 +182,12 @@ if st.button("入力完了,データ表示させる"):
     #fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", yaxis="y2"))
     fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
 
-# 2つ目のy軸のラベル設定
-    fig.update_yaxes(title_text="気温(℃)", secondary_y=False)
-    fig.update_yaxes(title_text="降水量(mm)", secondary_y=True)
+## 2つ目のy軸のラベル設定
+#    fig.update_yaxes(title_text="気温(℃)", secondary_y=False)
+#    fig.update_yaxes(title_text="降水量(mm)", secondary_y=True)
 # Y軸の目盛りを表示
     #fig.update_xaxes(title_text="日付")
-    fig.update_yaxes(title_text="気温(℃)", range=[-20, 40])
+#    fig.update_yaxes(title_text="気温(℃)", range=[-20, 40])
 # y軸2の設定
 #    fig.update_yaxes(title_text="降水量(mm)", range=[0, max(df["降水量(mm)"])*1.2], side="right", overlaying="y")
 
@@ -201,6 +201,17 @@ if st.button("入力完了,データ表示させる"):
     #fig.update_layout(yaxis2=dict(title="降水量(mm),日射量[h]"))
     #fig.update_yaxes(tickfont=dict(size=12), secondary_y=True)
     #fig.update_yaxes(title_text="降水量・日射量", secondary_y=True)
+    # 2つ目のy軸に棒グラフを追加
+    fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
+
+# 1つめのy軸の範囲設定
+    fig.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
+
+# 2つめのy軸の範囲設定
+    fig.update_yaxes(range=[0, 600], title_text="降水量(mm)", secondary_y=True)
+
+#fig.show()
+    
     st.plotly_chart(fig)
 
 
