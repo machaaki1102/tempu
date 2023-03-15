@@ -170,6 +170,7 @@ if st.button('Download CSV'):
 
 if st.button('グラフ表示'):
     import plotly.express as px
+    import plotly.graph_objects as go
 # #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
     fig = px.bar(df, x="日付", y=["平均気温(℃)", "最高気温(℃)", "最低気温(℃)", "降水量(mm)", "日照時間(h)"],
              title="日付別の気象情報",
