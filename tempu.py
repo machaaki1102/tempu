@@ -156,8 +156,7 @@ if st.button("入力完了,データ表示させる"):
     df = df.reset_index()
     df = df.drop("index", axis=1)
     df = df.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"])
-
-df = df
+    df_1 = df
 
 if st.button('Download CSV'):
     csv = df.to_csv(index=False).encode('utf-8-sig')
@@ -173,7 +172,7 @@ if st.button('グラフ表示'):
     import plotly.express as px
     import plotly.graph_objects as go
 # #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
-    fig = px.bar(df, x="日付", y=["平均気温(℃)", "最高気温(℃)", "最低気温(℃)", "降水量(mm)", "日照時間(h)"],
+    fig = px.bar(df_1, x="日付", y=["平均気温(℃)", "最高気温(℃)", "最低気温(℃)", "降水量(mm)", "日照時間(h)"],
              title="日付別の気象情報",
              labels={"value": "値", "variable": "変数", "日付": "日付"},
              barmode="group",
