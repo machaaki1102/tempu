@@ -132,12 +132,11 @@ block_no = int(block_no)
 #st.write(type(prec_no))
 #st.write(type(block_no))
 
-#ここからコード
+#body 
 date_new = start
-months = month_difference(start,finish)
+months = month_difference(start,finish)#月を計算
 date_list = date_lists(year,month)
 df = total_tem(year,month,day)
-
 
 #monthの期間分足す。
 while months >0:
@@ -147,10 +146,36 @@ while months >0:
     months = months -1
 #日付をオブジェクトから日数にする 
 df["日付"] = pd.to_datetime(df["日付"], format="%Y-%m-%d")
-
 #期間を絞る。
 df = df.query(f"'{start}' <= 日付 <= '{finish}'")
+df
+#=======2023.15.修正
+#1年前のデータフレームを作成
+start_ago = datetime.date(start.year -1 , start.month, start.day)#date_agoが前回のstart
+finish_ago = datetime.date(finish.year -1, finish.month, finish.day)#finishの1年前
 
+year_ago = start_ago.year
+#month = date_ago.month
+#day = date_ago.day
+
+date_new = start_ago
+months = month_difference(start_ago,finish_ago)
+date_list = date_lists(start_ago.year,start.month)
+df_ago = total_tem(start_ago.year,start_ago.ymonth,start_ago.yday)
+
+#monthの期間分足す。
+while months >0:
+    date_new,year,month = df_add(date_new) 
+    date_list = date_lists(start.year,start.month)
+    df_ago = pd.concat([df_ago,total_tem(year,month,1)],axis=0) 
+    months = months -1
+#日付をオブジェクトから日数にする 
+df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
+#期間を絞る。
+df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
+
+df_ago
+#======
 
 if st.button("入力完了,データ表示させる"):
     df["日付"] = df["日付"].dt.strftime("%Y-%m-%d")
