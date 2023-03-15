@@ -206,10 +206,10 @@ if st.button("入力完了,データ表示させる"):
     #fig.update_yaxes(title_text="降水量・日射量", secondary_y=True)
     # 2つ目のy軸に棒グラフを追加
     fig.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
+    fig.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", marker_color='red'), secondary_y=True)
 
 # 1つめのy軸の範囲設定
     fig.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
-
 # 2つめのy軸の範囲設定
     fig.update_yaxes(range=[0, 600], title_text="降水量(mm)", secondary_y=True)
 
