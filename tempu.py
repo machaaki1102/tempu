@@ -183,7 +183,7 @@ if st.button("入力完了,データ表示させる"):
 # 1つめのy軸の範囲設定
     fig.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
 # 2つめのy軸の範囲設定
-    fig.update_yaxes(range=[0, 150], title_text="降水量(mm)", secondary_y=True)
+    fig.update_yaxes(range=[0, 100], title_text="降水量(mm)", secondary_y=True)
     
     st.plotly_chart(fig)
 
