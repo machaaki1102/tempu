@@ -177,8 +177,8 @@ df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 
 df_ago
 
-#st.write(df.dtypes)
-st.write(df_ago.dtypes)
+st.write(df.dtypes)
+#ddst.write(df_ago.dtypes)
 
 #======
 #平均気温・降水量・日射時間の差と累積を表示
