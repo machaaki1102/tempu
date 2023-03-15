@@ -175,17 +175,16 @@ df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
 #期間を絞。
 df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 #df_ago
-
 df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
 # - df["平均気温(℃)"]
 
 #st.write(len(df[["日付"]]))
 
 #st.write(df_dif.dtypes)
-df
-df_dif_2 = df_dif.merge(df)
+#df
+#df_dif_2 = df_dif.merge(df)
 
-df_dif_2
+#df_dif_2
 #st.write(df.dtypes)
 #ddst.write(df_ago.dtypes)
 
