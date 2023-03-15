@@ -176,7 +176,8 @@ df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
 df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 
 df_ago
-st.write(df.dtypes)
+
+#st.write(df.dtypes)
 st.write(df_ago.dtypes)
 
 #======
