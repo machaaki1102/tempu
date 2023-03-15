@@ -177,7 +177,7 @@ if st.button("入力完了,データ表示させる"):
     #fig.add_trace(px.line(df, x="日付", y="最低気温(℃)", name="最低気温(℃)").data[0])
     #fig.add_trace(px.line(df, x="日付", y="降水量(mm)", name="降水量(mm)").data[0])
     #fig.add_trace(px.line(df, x="日付", y="日照時間(h)", name="日照時間(h)").data[0])
-    df
+    #df
     fig.show()
 
 
