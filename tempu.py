@@ -166,9 +166,9 @@ df_ago = total_tem(start_ago.year,start_ago.month,start_ago.day)
 st.write(months)
 #monthの期間分足す。
 while months >0:
-    date_new,start_ago.year,start_ago.month = df_add(date_new) 
-    date_list = date_lists(start.year,start.month)
-    df_ago = pd.concat([df_ago,total_tem(start_ago.year,start_ago.month,1)],axis=0) 
+    date_new,year,month = df_add(date_new) 
+    date_list = date_lists(year,month)
+    df_ago = pd.concat([df_ago,total_tem(year,month,1)],axis=0) 
     months = months -1
 #日付をオブジェクトから日数にする 
 df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
