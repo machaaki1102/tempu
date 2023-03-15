@@ -198,26 +198,3 @@ if st.button('Download CSV'):
         file_name="sample.csv"
     )
 
-#追加パーツ
-    import plotly.express as px
-    import plotly.graph_objects as go
-# #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
-    fig = px.bar(df_1, x="日付", y=["平均気温(℃)", "最高気温(℃)", "最低気温(℃)", "降水量(mm)", "日照時間(h)"],
-             title="日付別の気象情報",
-             labels={"value": "値", "variable": "変数", "日付": "日付"},
-             barmode="group",
-             height=600)
-    fig.update_layout(xaxis_title="日付", yaxis_title="値")
-    fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
-    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
-    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
-    fig.add_trace(go.Scatter(x=df['日付'], y=df['降水量(mm)'], name="降水量(mm)", mode="lines"))
-    fig.add_trace(go.Scatter(x=df['日付'], y=df['日照時間(h)'], name="日照時間(h)", mode="lines"))
-    
-    #fig.add_trace(px.line(df, x="日付", y="平均気温(℃)", name="平均気温(℃)").data[0])
-    #fig.add_trace(px.line(df, x="日付", y="最高気温(℃)", name="最高気温(℃)").data[0])
-    #fig.add_trace(px.line(df, x="日付", y="最低気温(℃)", name="最低気温(℃)").data[0])
-    #fig.add_trace(px.line(df, x="日付", y="降水量(mm)", name="降水量(mm)").data[0])
-    #fig.add_trace(px.line(df, x="日付", y="日照時間(h)", name="日照時間(h)").data[0])
-
-    fig.show()
