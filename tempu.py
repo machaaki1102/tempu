@@ -188,7 +188,7 @@ if st.button("入力完了,データ表示させる"):
     fig.update_yaxes(title_text="気温(℃)", range=[-10, 40])
 
 # y軸2の設定
-    fig.update_yaxes(title_text="降水量(mm)", range=[0, max(df["降水量(mm)"])*1.2], side="right", overlaying="y")
+#    fig.update_yaxes(title_text="降水量(mm)", range=[0, max(df["降水量(mm)"])*1.2], side="right", overlaying="y")
 
 # y軸1の設定
     #fig.update_yaxes(title_text="気温(℃)", range=[-10, 40])
