@@ -182,7 +182,7 @@ df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["
 
 #st.write(df_dif.dtypes)
 #df
-df_dif_2 = df_dif.merge(df)
+df_dif_2 = pd.concat([df,dif])
 
 df_dif_2
 #st.write(df.dtypes)
