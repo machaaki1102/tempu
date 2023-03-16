@@ -119,9 +119,29 @@ for a in range(len(df_sub)):
 
 st.title('気象庁より気温、降水量、日射量')
 #st.dataframe(df_sub)
-ken =st.selectbox('県を選んでください',df_sub['県'].unique())
-start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
-finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
+st.set_page_config(layout="wide")
+
+# 画面の幅を設定
+st.set_page_config(layout="wide")
+
+# 3つの列を作成
+col1, col2, col3 = st.beta_columns(3)
+
+# 各列にselectboxを追加
+with col1:
+    ken =st.selectbox('県を選んでください',df_sub['県'].unique())
+with col2:
+    start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
+with col3:
+    finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
+
+#ken =st.selectbox('県を選んでください',df_sub['県'].unique())
+#start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
+#finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
+
+
+
+
 year = start.year
 month = start.month
 day = start.day
