@@ -313,4 +313,4 @@ df_nono = df_nono[df_nono['県'] == ken]
 #['県','prec_no','block_no','地点名']
 df_nono = df_nono[['県','prec_no','block_no','地点名']]
 #df_nono
-prec =st.selectbox('県を選んでください',df_nono['地点名'].unique())
+prec =st.selectbox('地名を選んでください',df_nono['地点名'].unique())
