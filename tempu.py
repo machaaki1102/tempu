@@ -135,9 +135,9 @@ col1, col2, col3 = st.columns(3)
 with col1:
     ken =st.selectbox('県を選んでください',df_sub['県'].unique())
 with col2:
-    start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
+    start = st.date_input("開始日を選択してください", value=datetime.date(2022, 5, 5))
 with col3:
-    finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
+    finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 10, 3))
 
 #ken =st.selectbox('県を選んでください',df_sub['県'].unique())
 #start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
@@ -269,6 +269,13 @@ with col1:
 with col2:
     st.plotly_chart(fig3, use_container_width=True)
 
+col1, col2 = st.columns(2)
+
+# 各列にselectboxを追加
+with col1:
+    st.plotly_chart(fig, use_container_width=True)
+with col2:
+    df
 
 
 #with col1:
