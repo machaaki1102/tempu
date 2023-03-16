@@ -123,6 +123,7 @@ for a in range(len(df_sub)):
 
 #st.set_page_config(page_title="<title>栽培期間中の気温/降水量/日射量(気象庁データ)</title>",layout="wide",unsafe_allow_html=True)
 st.set_page_config(page_title="タイトル",layout="wide")
+st.write("<title>栽培期間中の気温/降水量/日射量(気象庁データ)</title>", unsafe_allow_html=True)
 #st.title('栽培期間中の気温/降水量/日射量　(気象庁データ)')
 #st.dataframe(df_sub)
 
