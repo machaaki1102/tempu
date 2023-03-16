@@ -229,7 +229,7 @@ fig2.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
 # 2つめのy軸の範囲設定
 fig2.update_yaxes(range=[0, 100], title_text="降水量(mm)", secondary_y=True)
     
-st.plotly_chart(fig2)
+#st.plotly_chart(fig2)
 
 
 #差分を出す
@@ -249,7 +249,21 @@ fig.add_trace(go.Scatter(x=df_dif["日付"], y=df_dif["平均気温(℃)"].cumsu
 fig.update_xaxes(type='date', tickformat='%Y-%m-%d', title="日付")
 fig.update_layout(title="気温差")
 
-st.plotly_chart(fig)
+#st.plotly_chart(fig)
+
+#========
+col1, col2, col3 = st.beta_columns(3)
+
+# 各列にselectboxを追加
+with col1:
+    df
+with col2:
+    st.plotly_chart(fig2)
+    #start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
+with col3:
+    st.plotly_chart(fig)
+    #finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
+
 
 #st.write(df.dtypes)
 #ddst.write(df_ago.dtypes)
