@@ -250,7 +250,7 @@ fig.add_trace(go.Scatter(x=df_dif["日付"], y=df_dif["平均気温(℃)"].cumsu
 
 # X軸を日付として設定します
 fig.update_xaxes(type='date', tickformat='%Y-%m-%d', title="日付")
-fig.update_layout(title="気温差_前年との比較")
+fig.update_layout(title="気温差_前年比較")
 
 #st.plotly_chart(fig)
 #日照時間(h)
@@ -262,7 +262,7 @@ fig4.add_trace(go.Scatter(x=df_dif["日付"], y=df_dif["日照時間(h)"].cumsum
 
 # X軸を日付として設定します
 fig4.update_xaxes(type='date', tickformat='%Y-%m-%d', title="日付")
-fig4.update_layout(title="日照時間_前年との比較")
+fig4.update_layout(title="日照時間_前年比較")
 
 
 
