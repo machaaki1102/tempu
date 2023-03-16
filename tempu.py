@@ -285,19 +285,6 @@ with col1:
 with col2:
     st.plotly_chart(fig4, use_container_width=True)
 
-
-#with col1:
-#    st.plotly_chart(fig2)
-    #df
-#with col2:
-#    st.plotly_chart(fig3)
-    #start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
-#with col3:
-#    st.plotly_chart(fig)
-    #finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
-
-
-#if st.button('Download CSV'):
 csv = df.to_csv(index=False).encode('utf-8-sig')
 csv2 = df_ago.to_csv(index=False).encode('utf-8-sig')
 
@@ -311,10 +298,10 @@ with col1:
     data=csv,
     file_name="data.csv"
     )
-#    st.plotly_chart(fig, use_container_width=True)
 with col2:
     st.download_button(
     label="1年前のデータ　csv_download",
     data=csv,
     file_name="data.csv"
     )
+
