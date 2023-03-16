@@ -121,7 +121,7 @@ for a in range(len(df_sub)):
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
 
 
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 st.title('気象庁より気温、降水量、日射量')
 #st.dataframe(df_sub)
 
