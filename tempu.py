@@ -117,11 +117,13 @@ for a in range(len(df_sub)):
     else:
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
 
+
+st.set_page_config(layout="wide")
 st.title('気象庁より気温、降水量、日射量')
 #st.dataframe(df_sub)
 
 # 画面の幅を設定
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 
 # 3つの列を作成
 col1, col2, col3 = st.beta_columns(3)
