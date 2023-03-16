@@ -122,7 +122,7 @@ for a in range(len(df_sub)):
 
 
 #st.set_page_config(layout="wide")
-st.title('栽培期間中の気温/降水量/日射量 by japan Meteorological Agency')
+st.title('栽培期間中の気温/降水量/日射量　(気象庁データ)')
 #st.dataframe(df_sub)
 
 # 画面の幅を設定
