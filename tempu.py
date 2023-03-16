@@ -205,7 +205,32 @@ df_ago = df_ago.reindex(columns=["日付", "平均気温(℃)","最高気温(℃
 
 #期間を絞る。
 df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
-df_ago
+#df_ago
+
+fig2 = make_subplots(specs=[[{"secondary_y": True}]])
+# #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
+#    fig = px.bar(df, x="日付", y=[ "降水量(mm)", "日照時間(h)"],＃         title="日付別の気象情報",
+#             labels={"value": "℃", "variable": "変数", "日付": "日付"},
+#             barmode="group",
+#             height=600)
+#    fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
+#    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
+#    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
+
+fig2.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='green')))
+fig2.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
+fig2.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='blue')))
+
+fig2.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
+fig2.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", marker_color='orange'), secondary_y=True)
+
+# 1つめのy軸の範囲設定
+fig2.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
+# 2つめのy軸の範囲設定
+fig2.update_yaxes(range=[0, 100], title_text="降水量(mm)", secondary_y=True)
+    
+st.plotly_chart(fig2)
+
 
 #差分を出す
 df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
