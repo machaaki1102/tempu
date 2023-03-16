@@ -380,7 +380,7 @@ prec =st.selectbox('地名を選んでください',df_nono['地点名'].unique(
 df_nono_2
 prec_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['prec_no']
 
-write(prec_no_2)
+st.write(prec_no_2)
 
 #total_tem2(year,month,day):
 #block_no_2 =  df_nono_2[df_perc['地点名'] == perc][block_no]
