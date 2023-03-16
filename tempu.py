@@ -276,7 +276,7 @@ with col3:
 csv = df.to_csv(index=False).encode('utf-8-sig')
 
 st.download_button(
-    label="気象データ",
+    label="csv_download",
     data=csv,
     file_name="data.csv"
     )
