@@ -126,7 +126,7 @@ st.title('栽培期間中の気温/降水量/日射量　(気象庁データ)')
 #st.dataframe(df_sub)
 
 # 画面の幅を設定
-#st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 # 3つの列を作成
 col1, col2, col3 = st.columns(3)
