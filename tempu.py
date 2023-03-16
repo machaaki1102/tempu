@@ -261,11 +261,21 @@ fig.update_layout(title="気温差")
 col1, col2 = st.columns(2)
 
 # 各列にselectboxを追加
+col1, col2 = st.columns(2)
+
+# 各列にselectboxを追加
 with col1:
-    st.plotly_chart(fig2)
-    #df
+    st.plotly_chart(fig2, use_container_width=True)
 with col2:
-    st.plotly_chart(fig3)
+    st.plotly_chart(fig3, use_container_width=True)
+
+
+
+#with col1:
+#    st.plotly_chart(fig2)
+    #df
+#with col2:
+#    st.plotly_chart(fig3)
     #start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
 #with col3:
 #    st.plotly_chart(fig)
