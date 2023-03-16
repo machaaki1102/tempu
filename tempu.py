@@ -175,6 +175,7 @@ df = df.reset_index()
 df = df.drop("index", axis=1)
 df = df.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"])
 df
+
 #1年前のデータフレームを作成
 start_ago = datetime.date(start.year -1 , start.month, start.day)#date_agoが前回のstart
 finish_ago = datetime.date(finish.year -1, finish.month, finish.day)#finishの1年前
@@ -199,7 +200,7 @@ while months >0:
 df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
 #期間を絞。
 df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
-#df_ago
+df_ago
 
 #差分を出す
 df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
