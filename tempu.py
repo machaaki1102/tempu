@@ -93,7 +93,7 @@ def total_tem(year,month,day):
 
 def total_tem2(year,month,day):
     #url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
-    url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
+    url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
 
     response = requests.get(url)
     html = response.text
@@ -376,6 +376,8 @@ df_nono = df_nono[df_nono['県'] == ken]
 df_nono_2 = df_nono[['県','prec_no','block_no','地点名']]
 #df_nono
 prec =st.selectbox('地名を選んでください',df_nono['地点名'].unique())
-perc_no_2 = df_nono_2[df_perc['地点名'] == perc][perc_no]
+perc_no_2 = df_nono_2[df_perc['地点名'] == perc]['perc_no']
 write(perc_no_2)
+
+#total_tem2(year,month,day):
 #block_no_2 =  df_nono_2[df_perc['地点名'] == perc][block_no]
