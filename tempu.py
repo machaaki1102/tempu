@@ -288,10 +288,16 @@ with col2:
 
 #if st.button('Download CSV'):
 csv = df.to_csv(index=False).encode('utf-8-sig')
+csv2 = df_ago.to_csv(index=False).encode('utf-8-sig')
 
 st.download_button(
-    label="csv_download",
+    label="今年のデータ　csv_download",
     data=csv,
     file_name="data.csv"
     )
 
+st.download_button(
+    label="1年前のデータ　csv_download",
+    data=csv,
+    file_name="data.csv"
+    )
