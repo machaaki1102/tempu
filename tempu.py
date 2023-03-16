@@ -223,20 +223,20 @@ fig2.update_layout(title="今回の天候")
 #st.plotly_chart(fig2)
 
 #1年分のグラフ
-fig2 = make_subplots(specs=[[{"secondary_y": True}]])
+fig3 = make_subplots(specs=[[{"secondary_y": True}]])
 #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
-fig2.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='green')))
-fig2.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
-fig2.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='blue')))
-
-fig2.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
-fig2.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", marker_color='orange'), secondary_y=True)
+fig3.add_trace(go.Scatter(x=df_ago["日付"], y=df_ago["平均気温(℃)"], name="平均気温(℃)", line=dict(color='green')))
+fig3.add_trace(go.Scatter(x=df_ago["日付"], y=df_ago["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
+fig3.add_trace(go.Scatter(x=df_ago["日付"], y=df_ago["最低気温(℃)"], name="最低気温(℃)", line=dict(color='blue')))
+#棒グラフ
+fig3.add_trace(go.Bar(x=df_ago["日付"], y=df_ago["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
+fig3.add_trace(go.Bar(x=df_ago["日付"], y=df_ago["日照時間(h)"], name="日照時間(h)", marker_color='orange'), secondary_y=True)
 
 # 1つめのy軸の範囲設定
-fig2.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
+fig3.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
 # 2つめのy軸の範囲設定
-fig2.update_yaxes(range=[0, 100], title_text="降水量(mm)", secondary_y=True)
-fig2.update_layout(title="今回の天候")    
+fig3.update_yaxes(range=[0, 100], title_text="降水量(mm)", secondary_y=True)
+fig3.update_layout(title="1年前の天候")    
 
 #差分を出す
 df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
@@ -265,24 +265,16 @@ with col1:
     st.plotly_chart(fig2)
     #df
 with col2:
-    st.plotly_chart(fig)
+    st.plotly_chart(fig3)
     #start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
 with col3:
     st.plotly_chart(fig)
     #finish = st.date_input("終了日を選択してください", value=datetime.date(2022, 8, 3))
 
 
-#st.write(df.dtypes)
-#ddst.write(df_ago.dtypes)
-
-#======
-#平均気温・降水量・日射時間の差と累積を表示
-
-#df_dif = df_ago - df
-#df_dif
-
 #if st.button('Download CSV'):
 csv = df.to_csv(index=False).encode('utf-8-sig')
+
 st.download_button(
     label="気象データ",
     data=csv,
