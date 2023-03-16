@@ -126,16 +126,8 @@ st.set_page_config(page_title="気象データ",layout="wide")
 st.title("栽培期間中の気温/降水量/日射量(気象庁データ)", 
          style={"font-size": "24px"})
 
-#st.subtitle("栽培期間中の気温/降水量/日射量(気象庁データ)")
-#st.title('栽培期間中の気温/降水量/日射量　(気象庁データ)')
-#st.dataframe(df_sub)
-
-# 画面の幅を設定
-#st.set_page_config(layout="wide")
-
 # 3つの列を作成
 col1, col2, col3 = st.columns(3)
-
 # 各列にselectboxを追加
 with col1:
     ken =st.selectbox('県を選んでください',df_sub['県'].unique())
