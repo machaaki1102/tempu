@@ -121,7 +121,8 @@ for a in range(len(df_sub)):
         df_sub['block_no'][a]= "{:0>4}".format(num_str)
 
 
-st.set_page_config(page_title="<title>栽培期間中の気温/降水量/日射量(気象庁データ)</title>",layout="wide",unsafe_allow_html=True)
+#st.set_page_config(page_title="<title>栽培期間中の気温/降水量/日射量(気象庁データ)</title>",layout="wide",unsafe_allow_html=True)
+st.set_page_config(page_title="タイトル",layout="wide")
 #st.title('栽培期間中の気温/降水量/日射量　(気象庁データ)')
 #st.dataframe(df_sub)
 
