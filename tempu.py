@@ -305,5 +305,5 @@ with col2:
     file_name="data.csv"
     )
 
-re = pd.read_csv('df3.csv',encoding='shift-jis')
+re = pd.read_csv('df3.csv')
 re
