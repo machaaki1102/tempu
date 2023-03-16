@@ -222,6 +222,8 @@ fig.add_trace(go.Scatter(x=df_dif["日付"], y=df_dif["平均気温(℃)"].cumsu
 
 # X軸を日付として設定します
 fig.update_xaxes(type='date', tickformat='%Y-%m-%d', title="日付")
+fig.update_layout(title="期間中の温度差")
+
 st.plotly_chart(fig)
 
 #st.write(df.dtypes)
