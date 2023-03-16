@@ -304,6 +304,9 @@ with col2:
     data=csv,
     file_name="data.csv"
     )
-
-re = pd.read_csv('df3.csv')
-re
+    
+#県の以下のレベルを作る
+df_nono = pd.read_csv('df3.csv')
+kens = '北海道'
+df_nono = df_nono[df_nono['県'] == kens]
+df_nono
