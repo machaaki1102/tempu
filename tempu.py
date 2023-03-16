@@ -35,19 +35,15 @@ def date_lists(year,month):
 #平均気温と日照時間のデータフレームを作る。
 def total_tem(year,month,day):
     url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
-    
     response = requests.get(url)
     html = response.text
     soup = BeautifulSoup(html, 'html.parser')
-
     # findAllで条件に一致するものをすべて抜き出します。
     rows = soup.findAll('tr',class_='mtx')
     #データだけを抜き出す
     rows = rows[4:]
-
     #All_list = [['陸の平均気圧(hPa)', '海の平均気圧(hPa)', '降水量(mm)',最低気温(℃) '平均気温(℃)', '平均湿度(%)', '平均風速(m/s)', '日照時間(h)']]
     All_list = [['平均気温(℃)','日照時間(h)','降水量(mm)','最高気温(℃)','最低気温(℃)']]
-
     for row in rows:
             # 今trのなかのtdをすべて抜き出します
             data = row.findAll('td')
@@ -85,6 +81,72 @@ def total_tem(year,month,day):
     #前回        rowData.append(float(data[16].string.replace(")", "")))
 
               #次の行にデータを追加
+            All_list.append(rowData)
+            
+    data = All_list[1:]
+    columns = All_list[0]
+    df = pd.DataFrame(data,columns=columns)
+    
+    #Indexを1からふり直す
+    df['日付'] = date_list
+    return df
+
+def total_tem2(year,month,day):
+    #url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
+    url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
+
+    response = requests.get(url)
+    html = response.text
+    soup = BeautifulSoup(html, 'html.parser')
+    # findAllで条件に一致するものをすべて抜き出します。
+    rows = soup.findAll('tr',class_='mtx')
+    #データだけを抜き出す
+    rows = rows[4:]
+    #All_list = [['陸の平均気圧(hPa)', '海の平均気圧(hPa)', '降水量(mm)',最低気温(℃) '平均気温(℃)', '平均湿度(%)', '平均風速(m/s)', '日照時間(h)']]
+    All_list = [['平均気温(℃)','日照時間(h)','降水量(mm)','最高気温(℃)','最低気温(℃)']]
+    for row in rows:
+            # 今trのなかのtdをすべて抜き出します
+            data = row.findAll('td')
+            #追加
+            #st.write(data)
+
+              #１行の中には様々なデータがあるので全部取り出す。
+            rowData = [] #初期化
+            if  '--' in data[1].string:
+            #if data[3].string == '--':
+                #rowData.append(np.nan)
+                rowData.append(0)
+            else:
+                rowData.append(float(data[1].string.replace(")", "").replace(" ", "").replace("]", "")))
+            
+            if  '--' in data[4].string:
+            #if data[3].string == '--':
+                #rowData.append(np.nan)
+                rowData.append(0)
+            else:
+                rowData.append(float(data[4].string.replace(")", "").replace(" ", "").replace("]", "")))
+ 
+            if  '--' in data[5].string:
+            #if data[3].string == '--':
+                #rowData.append(np.nan)
+                rowData.append(0)
+            else:
+                rowData.append(float(data[5].string.replace(")", "").replace(" ", "").replace("]", "")))
+            
+            if  '--' in data[6].string:
+            #if data[3].string == '--':
+                #rowData.append(np.nan)
+                rowData.append(0)
+            else:
+                rowData.append(float(data[6].string.replace(")", "").replace(" ", "").replace("]", "")))
+            
+            if  '--' in data[15].string:
+            #if data[3].string == '--':
+                #rowData.append(np.nan)
+                rowData.append(0)
+            else:
+                rowData.append(float(data[15].string.replace(")", "").replace(" ", "").replace("]", "")))
+
             All_list.append(rowData)
             
     data = All_list[1:]
