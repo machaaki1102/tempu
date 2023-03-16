@@ -198,7 +198,12 @@ while months >0:
     months = months -1
 #日付をオブジェクトから日数にする 
 df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
-#期間を絞。
+df_ago = df_ago.reset_index()
+df_ago = df_ago.drop("index", axis=1)
+df_ago = df_ago.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"])
+
+
+#期間を絞る。
 df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 df_ago
 
