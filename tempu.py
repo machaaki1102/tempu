@@ -253,6 +253,18 @@ fig.update_xaxes(type='date', tickformat='%Y-%m-%d', title="日付")
 fig.update_layout(title="気温差")
 
 #st.plotly_chart(fig)
+#日照時間(h)
+fig4 = go.Figure()
+# 差分の折れ線グラフを追加します
+fig4.add_trace(go.Scatter(x=df_dif["日付"], y=df_dif["日照時間(h)"], mode="lines", name="差分"))
+# 積み上げ値の折れ線グラフを追加します
+fig4.add_trace(go.Scatter(x=df_dif["日付"], y=df_dif["日照時間(h)"].cumsum(), mode="lines", name="積み上げ"))
+
+# X軸を日付として設定します
+fig4.update_xaxes(type='date', tickformat='%Y-%m-%d', title="日付")
+fig4.update_layout(title="日照時間")
+
+
 
 #========
 col1, col2 = st.columns(2)
@@ -272,7 +284,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.plotly_chart(fig, use_container_width=True)
 with col2:
-    df
+    st.plotly_chart(fig4, use_container_width=True)
 
 
 #with col1:
