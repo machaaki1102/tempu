@@ -290,13 +290,19 @@ with col2:
 csv = df.to_csv(index=False).encode('utf-8-sig')
 csv2 = df_ago.to_csv(index=False).encode('utf-8-sig')
 
-st.download_button(
+
+col1, col2 = st.columns(2)
+
+# 各列にselectboxを追加
+with col1:
+    st.download_button(
     label="今年のデータ　csv_download",
     data=csv,
     file_name="data.csv"
     )
-
-st.download_button(
+#    st.plotly_chart(fig, use_container_width=True)
+with col2:
+    st.download_button(
     label="1年前のデータ　csv_download",
     data=csv,
     file_name="data.csv"
