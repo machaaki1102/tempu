@@ -201,22 +201,13 @@ df_ago["日付"] = pd.to_datetime(df_ago["日付"], format="%Y-%m-%d")
 df_ago = df_ago.reset_index()
 df_ago = df_ago.drop("index", axis=1)
 df_ago = df_ago.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"])
-
-
 #期間を絞る。
 df_ago = df_ago.query(f"'{start_ago}' <= 日付 <= '{finish_ago}'")
 #df_ago
 
+#設定のグラフ
 fig2 = make_subplots(specs=[[{"secondary_y": True}]])
-# #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
-#    fig = px.bar(df, x="日付", y=[ "降水量(mm)", "日照時間(h)"],＃         title="日付別の気象情報",
-#             labels={"value": "℃", "variable": "変数", "日付": "日付"},
-#             barmode="group",
-#             height=600)
-#    fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
-#    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
-#    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
-
+#"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
 fig2.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='green')))
 fig2.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
 fig2.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='blue')))
@@ -228,9 +219,24 @@ fig2.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時�
 fig2.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
 # 2つめのy軸の範囲設定
 fig2.update_yaxes(range=[0, 100], title_text="降水量(mm)", secondary_y=True)
-    
+fig2.update_layout(title="今回の天候")    
 #st.plotly_chart(fig2)
 
+#1年分のグラフ
+fig2 = make_subplots(specs=[[{"secondary_y": True}]])
+#"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
+fig2.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='green')))
+fig2.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
+fig2.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='blue')))
+
+fig2.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
+fig2.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", marker_color='orange'), secondary_y=True)
+
+# 1つめのy軸の範囲設定
+fig2.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
+# 2つめのy軸の範囲設定
+fig2.update_yaxes(range=[0, 100], title_text="降水量(mm)", secondary_y=True)
+fig2.update_layout(title="今回の天候")    
 
 #差分を出す
 df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
@@ -256,9 +262,10 @@ col1, col2, col3 = st.columns(3)
 
 # 各列にselectboxを追加
 with col1:
-    df
-with col2:
     st.plotly_chart(fig2)
+    #df
+with col2:
+    st.plotly_chart(fig)
     #start = st.date_input("開始日を選択してください", value=datetime.date(2022, 1, 5))
 with col3:
     st.plotly_chart(fig)
@@ -274,46 +281,11 @@ with col3:
 #df_dif = df_ago - df
 #df_dif
 
-if st.button("入力完了,データ表示させる"):
-    df["日付"] = df["日付"].dt.strftime("%Y-%m-%d")
-    df = df.reset_index()
-    df = df.drop("index", axis=1)
-    df = df.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"])
-    df
-# make_subplotsで2つのy軸を持つレイアウト作成
-
-    fig2 = make_subplots(specs=[[{"secondary_y": True}]])
-# #"日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"]
-#    fig = px.bar(df, x="日付", y=[ "降水量(mm)", "日照時間(h)"],＃         title="日付別の気象情報",
-#             labels={"value": "℃", "variable": "変数", "日付": "日付"},
-#             barmode="group",
-#             height=600)
-#    fig.add_trace(go.Scatter(x=df['日付'], y=df['平均気温(℃)'], name="平均気温(℃)", mode="lines"))
-#    fig.add_trace(go.Scatter(x=df['日付'], y=df['最高気温(℃)'], name="最高気温(℃)", mode="lines"))
-#    fig.add_trace(go.Scatter(x=df['日付'], y=df['最低気温(℃)'], name="最低気温(℃)", mode="lines"))
-
-    fig2.add_trace(go.Scatter(x=df["日付"], y=df["平均気温(℃)"], name="平均気温(℃)", line=dict(color='green')))
-    fig2.add_trace(go.Scatter(x=df["日付"], y=df["最高気温(℃)"], name="最高気温(℃)", line=dict(color='red')))
-    fig2.add_trace(go.Scatter(x=df["日付"], y=df["最低気温(℃)"], name="最低気温(℃)", line=dict(color='blue')))
-
-    fig2.add_trace(go.Bar(x=df["日付"], y=df["降水量(mm)"], name="降水量(mm)", marker_color='gray'), secondary_y=True)
-    fig2.add_trace(go.Bar(x=df["日付"], y=df["日照時間(h)"], name="日照時間(h)", marker_color='orange'), secondary_y=True)
-
-# 1つめのy軸の範囲設定
-    fig2.update_yaxes(range=[-20, 40], title_text="気温(℃)", secondary_y=False)
-# 2つめのy軸の範囲設定
-    fig2.update_yaxes(range=[0, 100], title_text="降水量(mm)", secondary_y=True)
-    
-    st.plotly_chart(fig2)
-
-
-if st.button('Download CSV'):
-    csv = df.to_csv(index=False).encode('utf-8-sig')
-    #b64 = base64.b64encode(csv.encode()).decode()
-    #href = f"data:file/csv;base64,{b64}"
-    st.download_button(
-        label="気象データ",
-        data=csv,
-        file_name="sample.csv"
+#if st.button('Download CSV'):
+csv = df.to_csv(index=False).encode('utf-8-sig')
+st.download_button(
+    label="気象データ",
+    data=csv,
+    file_name="data.csv"
     )
 
