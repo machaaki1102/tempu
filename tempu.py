@@ -129,7 +129,7 @@ st.title('気象庁より気温、降水量、日射量')
 #st.set_page_config(layout="wide")
 
 # 3つの列を作成
-col1, col2, col3 = st.beta_columns(3)
+col1, col2, col3 = st.columns(3)
 
 # 各列にselectboxを追加
 with col1:
@@ -252,7 +252,7 @@ fig.update_layout(title="気温差")
 #st.plotly_chart(fig)
 
 #========
-col1, col2, col3 = st.beta_columns(3)
+col1, col2, col3 = st.columns(3)
 
 # 各列にselectboxを追加
 with col1:
