@@ -152,13 +152,13 @@ def total_tem2(year,month,day):
             
     data = All_list[1:]
     columns = All_list[0]
-    df = pd.DataFrame(data,columns=columns)
+    df_3 = pd.DataFrame(data,columns=columns)
     
-    df
+    df_3
     
     #Indexを1からふり直す
-    df['日付'] = date_list
-    return df
+    df_3['日付'] = date_list
+    return df_3
 
 #日付を足す    
 def df_add(date_new):
