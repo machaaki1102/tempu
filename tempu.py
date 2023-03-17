@@ -158,6 +158,7 @@ def total_tem2(year,month,day):
     
     #Indexを1からふり直す
     df_3['日付'] = date_list
+    
     return df_3
 
 #日付を足す    
@@ -408,7 +409,7 @@ st.write(day)
 #date_lists(year,month)
 months = month_difference(start,finish)#月を計算
 date_list = date_lists(year,month)
-st.write(date_list)
+st.write(date_list.dtype)
 df_3 = total_tem2(year,month,day)
 
 while months >0:
