@@ -220,6 +220,7 @@ block_no = int(block_no)
 date_new = start
 months = month_difference(start,finish)#月を計算
 date_list = date_lists(year,month)
+st.write(date_list)
 df = total_tem(year,month,day)
 
 #monthの期間分足す。
