@@ -381,7 +381,7 @@ df_nono_2
 prec_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['prec_no'].values[0]
 block_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['block_no'].values[0]
 
-st.write(prec_no_2)
+#st.write(prec_no_2)
 #3桁は排除
 df_nono_3 = df_nono_2[df_nono_2['block_no'] >999]
 df_nono_3
