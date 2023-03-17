@@ -109,7 +109,7 @@ def total_tem2(year,month,day):
             # 今trのなかのtdをすべて抜き出します
             data = row.findAll('td')
             #追加
-            st.write(data)
+#            st.write(data)
 
               #１行の中には様々なデータがあるので全部取り出す。
             rowData = [] #初期化
@@ -153,6 +153,8 @@ def total_tem2(year,month,day):
     data = All_list[1:]
     columns = All_list[0]
     df = pd.DataFrame(data,columns=columns)
+    
+    df
     
     #Indexを1からふり直す
     df['日付'] = date_list
