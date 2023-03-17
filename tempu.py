@@ -109,7 +109,7 @@ def total_tem2(year,month,day):
             # 今trのなかのtdをすべて抜き出します
             data = row.findAll('td')
             #追加
-            #st.write(data)
+            st.write(data)
 
               #１行の中には様々なデータがあるので全部取り出す。
             rowData = [] #初期化
@@ -400,6 +400,7 @@ st.write(block_no_2)
 
 url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no=0{block_no_2}&year={year}&month={month}&day={day}&view='
 st.write(url)
+
 df_df = total_tem2(year,month,day)
 df_df
 #total_tem2(year,month,day):
