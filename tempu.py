@@ -376,8 +376,9 @@ df_nono = df_nono[df_nono['県'] == ken]
 #['県','prec_no','block_no','地点名']
 df_nono_2 = df_nono[['県','prec_no','block_no','地点名']]
 #df_nono
-#block_no100以下の排除
+#block_noの３桁の以下の排除
 df_nono_2 = df_nono_2[df_nono_2['block_no'] >999]
+#block_noの5桁の排除
 df_nono_2 = df_nono_2[df_nono_2['block_no'] < 10000]
 df_nono_2 = df_nono_2.sort_values('block_no', ascending=False)
 df_nono_2
