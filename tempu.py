@@ -398,7 +398,7 @@ day = start.day
 st.write(prec_no_2)
 st.write(block_no_2)
 
-url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
+url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no=0{block_no_2}&year={year}&month={month}&day={day}&view='
 st.write(url)
 df_df = total_tem2(year,month,day)
 df_df
