@@ -102,7 +102,7 @@ def total_tem2(year,month,day):
     rows = soup.findAll('tr',class_='mtx')
     #データだけを抜き出す
     #st.write(rows)
-    rows = rows[5:]
+    rows = rows[5:] 
     #All_list = [['陸の平均気圧(hPa)', '海の平均気圧(hPa)', '降水量(mm)',最低気温(℃) '平均気温(℃)', '平均湿度(%)', '平均風速(m/s)', '日照時間(h)']]
     All_list = [['平均気温(℃)','日照時間(h)','降水量(mm)','最高気温(℃)','最低気温(℃)']]
     for row in rows:
