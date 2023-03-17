@@ -382,7 +382,7 @@ prec_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['prec_no'].values[0]
 block_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['block_no'].values[0]
 
 st.write(prec_no_2)
-df_df = total_tem2(year,month,day)
-df_df
+#df_df = total_tem2(year,month,day)
+#df_df
 #total_tem2(year,month,day):
 #block_no_2 =  df_nono_2[df_perc['地点名'] == perc][block_no]
