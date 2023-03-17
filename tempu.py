@@ -409,7 +409,7 @@ st.write(day)
 #date_lists(year,month)
 months = month_difference(start,finish)#月を計算
 date_list = date_lists(year,month)
-st.write(date_list.dtype)
+st.write(date_list.type())
 df_3 = total_tem2(year,month,day)
 
 while months >0:
