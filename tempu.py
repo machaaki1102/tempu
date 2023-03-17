@@ -377,7 +377,7 @@ df_nono = df_nono[df_nono['県'] == ken]
 df_nono_2 = df_nono[['県','prec_no','block_no','地点名']]
 #df_nono
 #block_no100以下の排除
-df_nono_2 = df_nono_2[df_nono_2['block_no'] >999]
+df_nono_2 = df_nono_2[10000 >df_nono_2['block_no'] >999]
 df_nono_2 = df_nono_2.sort_values('block_no', ascending=False)
 df_nono_2
 prec =st.selectbox('地名を選んでください',df_nono_2['地点名'].unique())
@@ -394,7 +394,6 @@ day = start.day
 st.write(prec_no_2)
 st.write(block_no_2)
 
-df_nono_2 = df_nono_2[df_nono_2['block_no'] <1000]
 url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
 
 df_df = total_tem2(year,month,day)
