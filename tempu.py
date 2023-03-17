@@ -93,7 +93,7 @@ def total_tem(year,month,day):
 
 def total_tem2(year,month,day):
     #url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
-    url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
+    #url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
 
     response = requests.get(url)
     html = response.text
@@ -378,18 +378,23 @@ df_nono_2 = df_nono[['県','prec_no','block_no','地点名']]
 #df_nono
 prec =st.selectbox('地名を選んでください',df_nono['地点名'].unique())
 
-df_nono_2
+df_nono_2 = df_nono_2[df_nono_2['block_no'] >999]
 prec_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['prec_no'].values[0]
 block_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['block_no'].values[0]
 
 #st.write(prec_no_2)
 #3桁は排除
-df_nono_3 = df_nono_2[df_nono_2['block_no'] >999]
-df_nono_3
+#df_nono_3 = df_nono_2[df_nono_2['block_no'] >999]
+#df_nono_3
 
 year = start.year
 month = start.month
 day = start.day
+
+st.write(prec_no_2)
+st.write(block_no_2)
+
+url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
 
 df_df = total_tem2(year,month,day)
 df_df
