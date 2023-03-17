@@ -219,8 +219,8 @@ block_no = int(block_no)
 #body 
 date_new = start
 months = month_difference(start,finish)#月を計算
-date_list = date_lists(year,month)
-st.write(date_list)
+date_list = date_lists(year,month)#月のごとの日付のリストが作られる。
+#st.write(date_list)
 df = total_tem(year,month,day)
 
 #monthの期間分足す。
@@ -408,6 +408,7 @@ st.write(day)
 #date_lists(year,month)
 months = month_difference(start,finish)#月を計算
 date_list = date_lists(year,month)
+st.write(date_list)
 df_3 = total_tem2(year,month,day)
 
 while months >0:
