@@ -404,8 +404,24 @@ url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={pre
 st.write(year)
 st.write(month)
 st.write(day)
-date_lists(year,month)
-df_df = total_tem2(year,month,day)
-#df_df
+#date_lists(year,month)
+months = month_difference(start,finish)#月を計算
+date_list = date_lists(year,month)
+df_3 = total_tem2(year,month,day)
+
+while months >0:
+    date_new,year,month = df_add(date_new) 
+    date_list = date_lists(year,month)
+    df_3 = pd.concat([df_3,total_tem(year,month,1)],axis=0) 
+    months = months -1
+#日付をオブジェクトから日数にする 
+df_3["日付"] = pd.to_datetime(df_3["日付"], format="%Y-%m-%d")
+#期間を絞る。
+df_3 = df_3.query(f"'{start}' <= 日付 <= '{finish}'")
+#df["日付"] = df["日付"].dt.strftime("%Y-%m-%d"
+df_3 = df_3.reset_index()
+df_3 = df_3.drop("index", axis=1)
+df_3 = df_3.reindex(columns=["日付", "平均気温(℃)","最高気温(℃)","最低気温(℃)","降水量(mm)","日照時間(h)"])
+df_3
 #total_tem2(year,month,day):
 #block_no_2 =  df_nono_2[df_perc['地点名'] == perc][block_no]
