@@ -387,8 +387,8 @@ prec =st.selectbox('地名を選んでください',df_nono_2['地点名'].uniqu
 st.write(prec)
 #df_nono_2 = df_nono_2[df_nono_2['block_no'] <1000]
 #prec_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['prec_no'].values[0]
-prec_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['prec_no']
-prec_no_2
+prec_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['prec_no'].values[0]
+
 block_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['block_no'].values[0]
 
 year = start.year
