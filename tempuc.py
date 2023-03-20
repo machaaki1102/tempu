@@ -28,7 +28,7 @@ def date_lists(year,month):
       return date_list
 
 #１か月分の気象庁のデータをスクレイピングする。別途　prec_no とblock_noが事前に必要
-def total_tem(year,month,day):
+def total_tem(year,month,day):    
     url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
    
     response = requests.get(url)
@@ -72,53 +72,61 @@ def total_tem(year,month,day):
 
 
 def total_tem2(year,month,day):
+    if block_no_2 <1000:
+        url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no=0{block_no_2}&year={year}&month={month}&day={day}&view='
+    elif block_no_2 <10000:
+        url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
+    else:
+        url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
+        
     response = requests.get(url)
     html = response.text
     soup = BeautifulSoup(html, 'html.parser')
     # findAllで条件に一致するものをすべて抜き出します。
     rows = soup.findAll('tr',class_='mtx')
-    #データだけを抜き出す
-    #st.write(rows)##
-    rows = rows[4:] 
+    if block_no_2 <1000:
+        rows = rows[3:]
+    elif block_no_2 <10000:
+        rows = rows[3:]
+    else:   
+        rows = rows[4:] 
     #All_list = [['陸の平均気圧(hPa)', '海の平均気圧(hPa)', '降水量(mm)',最低気温(℃) '平均気温(℃)', '平均湿度(%)', '平均風速(m/s)', '日照時間(h)']]
     All_list = [['平均気温(℃)','日照時間(h)','降水量(mm)','最高気温(℃)','最低気温(℃)']]
     for row in rows:
             # 今trのなかのtdをすべて抜き出します
             data = row.findAll('td')
-            #追加
-#            st.write(data)
 
               #１行の中には様々なデータがあるので全部取り出す。
             rowData = [] #初期化
-            if  '--' in data[1].string:
+            if  '--' in data[1].string or '/' in data[1].string:
             #if data[3].string == '--':
                 #rowData.append(np.nan)
                 rowData.append(0)
             else:
                 rowData.append(float(data[1].string.replace(")", "").replace(" ", "").replace("]", "")))
             
-            if  '--' in data[4].string:
+            if  '--' in data[4].string or '/' in data[4].string:
             #if data[3].string == '--':
                 #rowData.append(np.nan)
                 rowData.append(0)
             else:
                 rowData.append(float(data[4].string.replace(")", "").replace(" ", "").replace("]", "")))
  
-            if  '--' in data[5].string:
+            if  '--' in data[5].string or '/' in data[5].string:
             #if data[3].string == '--':
                 #rowData.append(np.nan)
                 rowData.append(0)
             else:
                 rowData.append(float(data[5].string.replace(")", "").replace(" ", "").replace("]", "")))
             
-            if  '--' in data[6].string:
+            if  '--' in data[6].string or '/' in data[6].string:
             #if data[3].string == '--':
                 #rowData.append(np.nan)
                 rowData.append(0)
             else:
                 rowData.append(float(data[6].string.replace(")", "").replace(" ", "").replace("]", "")))
             
-            if  '--' in data[15].string:
+            if  '--' in data[15].string or '/' in data[15].string:
             #if data[3].string == '--':
                 #rowData.append(np.nan)
                 rowData.append(0)
@@ -130,9 +138,15 @@ def total_tem2(year,month,day):
     data = All_list[1:]
     columns = All_list[0]
     df_3 = pd.DataFrame(data,columns=columns)
-    
     df_3
+
+    date_list = []
+    _, last_day = calendar.monthrange(year, month)
+
+    for day in range(1, last_day+1):
+        date_list.append(datetime.date(year, month, day))
     
+    st.write(date_list)
     #Indexを1からふり直す
     df_3['日付'] = date_list
     
@@ -181,14 +195,63 @@ def total_tem_30(year,month,day):
 
     return df
 
+#block_no　の違いによってurlを変える。
+def total_tem_2(year,month,day):    
+    #url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
+    if block_no_2 <1000:
+        url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no=0{block_no_2}&year={year}&month={month}&day={day}&view='
+    elif block_no_2 <10000:
+        url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
+    else:
+        url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
+ 
+    response = requests.get(url)
+    html = response.text
+    soup = BeautifulSoup(html, 'html.parser')
+    # findAllで条件に一致するものをすべて抜き出します。
+    rows = soup.findAll('tr',class_='mtx')
+    #データだけを抜き出す
+    rows = rows[4:]
+    All_list = [['平均気温(℃)','日照時間(h)','降水量(mm)','最高気温(℃)','最低気温(℃)']]
+    for row in rows:
+
+            data = row.findAll('td')
+            rowData = [] #初期化
+            rowData.append(float(data[6].string.replace(")", "").replace(" ", "").replace("]", "")))
+            rowData.append(float(data[16].string.replace(")", "").replace(" ", "").replace("]", "")))
+            
+            if  '--' in data[3].string or '///' in data[3].string:
+                rowData.append(0)
+            else:
+                rowData.append(float(data[3].string.replace(")", "").replace(" ", "").replace("]", "")))
+            rowData.append(float(data[7].string.replace(")", "").replace(" ", "").replace("]", "")))
+            rowData.append(float(data[8].string.replace(")", "").replace(" ", "").replace("]", "")))
+    
+            All_list.append(rowData)
+            
+    data = All_list[1:]
+    columns = All_list[0]
+    df = pd.DataFrame(data,columns=columns)    
+    
+    #1か月間の日付
+    date_list = []
+    _, last_day = calendar.monthrange(year, month)
+
+    for day in range(1, last_day+1):
+        date_list.append(datetime.date(year, month, day))
+    
+    df['日付'] = date_list
+
+    return df
+
 #startの日にちからデータフレームを作る。自己関数total_temは通常の1か月、total_tem_30 過去平均を使っている。
-def detaFrame_meke(start,finish,total_tem):
+def detaFrame_meke(start,finish,total_tems):
     year = start.year
     month = start.month
     day = start.day
     #1か月分のデータフレームを作る。自己関数total_tem
-    df = total_tem(year,month,day)
-
+    df = total_tems(year,month,day)
+    df
     #必要な月分で増やす
     start_add = start
     months = month_difference(start,finish)
@@ -196,7 +259,7 @@ def detaFrame_meke(start,finish,total_tem):
         start_add = start_add + relativedelta(months=1)
         year_2 = start_add.year 
         month_2 = start_add.month
-        df = pd.concat([df,total_tem(year_2,month_2,1)],axis=0)
+        df = pd.concat([df,total_tems(year_2,month_2,1)],axis=0)
         months = months -1
 
     #日付をオブジェクトから日数にする 
@@ -365,19 +428,11 @@ block_no_2 = df_nono_2[df_nono_2['地点名'] == prec]['block_no'].values[0]
 st.write(prec_no_2)
 st.write(block_no_2)
 
-year = start.year
-month = start.month
-day = start.day
-
-if block_no_2 <1000:
-    url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no=0{block_no_2}&year={year}&month={month}&day={day}&view='
-elif block_no_2 <10000:
-    url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_a1.php?prec_no={prec_no_2}&block_no={block_no_2}&year={year}&month={month}&day={day}&view='
-else:
-    url = f'https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?prec_no={prec_no}&block_no={block_no}&year={year}&month={month}&day={day}&view='
-   
-
-df = detaFrame_meke(start,finish,total_tem)
+#year = start.year
+#month = start.month
+#day = start.day
+ 
+df = detaFrame_meke(start,finish,total_tem2)
 df
 
 months = month_difference(start,finish)#月を計算
