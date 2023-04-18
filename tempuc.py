@@ -258,7 +258,7 @@ def figu(df,title):
 
 #df_ago と　df　の　差をグラフかする y=平均気温(℃),title=気温差の前年比較
 def diff(df_ago,df,what,title):
-    df_dif = df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
+    df_dif = df[["平均気温(℃)","降水量(mm)","日照時間(h)"]] - df_ago[["平均気温(℃)","降水量(mm)","日照時間(h)"]]
     df_dif['日付'] = df["日付"]
     fig = go.Figure()
     # 差分の折れ線グラフを追加します
